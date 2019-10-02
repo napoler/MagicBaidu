@@ -27,13 +27,22 @@ class MagicBaidu():
 		start = start // 10 * 10
 		content = self.search_page(query, start, pause)
 		soup = BeautifulSoup(content, "html.parser")
+		# print("搜索标题：",soup.title.text)
 		now = start + 1
 		for item in soup.find_all('div'):
 			if item.has_attr('id') and item['id'] == str(now):
 				now += 1
 				result = {}
-				result['title'] = item.h3.get_text()
-				result['url'] = item.h3.a['href']
+ 
+				# print( item.h2.text)
+				# exit()
+				try:
+					result['title'] = item.h3.get_text()
+					result['url'] = item.h3.a['href']
+				except:
+					# result['title'] = item.h2.get_text()
+					# result['url'] = ''
+					return 
 				ss = ''
 				for div in item.find_all('div'):
 					if div.has_attr('class') and (div['class'][0].find('abstract') != -1 or div['class'][0] == 'c-row'):
