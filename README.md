@@ -7,9 +7,11 @@ Baidu search API. This is a brother repository of [MagicGoogle](https://github.c
 * Python 3
 
 # Installation
-
+使用git源码安装
 ```shell
-pip install MagicBaidu
+#pip install MagicBaidu
+
+pip install git+https://github.com/napoler/MagicBaidu.git
 ```
 
 # Tutorial
